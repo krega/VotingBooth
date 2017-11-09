@@ -353,7 +353,7 @@ table.fc-border-separate {
     height: 20px;
 }
 .fc-agenda-slots tr.fc-slot0 th, .fc-agenda-slots tr.fc-slot0 td {
-    border-top-width: 0;
+      border-top-width: 0;
 }
 .fc-agenda-slots tr.fc-minor th, .fc-agenda-slots tr.fc-minor td {
     border-top-style: dotted;
