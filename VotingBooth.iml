@@ -22,6 +22,9 @@
         </fileset>
       </configuration>
     </facet>
+    <facet type="app-engine-standard" name="Google App Engine Standard">
+      <configuration />
+    </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5">
     <output url="file://$MODULE_DIR$/target/classes" />
@@ -48,5 +51,10 @@
     <orderEntry type="library" name="Maven: jstl:jstl:1.2" level="project" />
     <orderEntry type="library" name="Maven: taglibs:standard:1.1.2" level="project" />
     <orderEntry type="library" name="jquery" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="Google App Engine Standard Local Server" level="application_server_libraries" />
+    <orderEntry type="library" scope="PROVIDED" name="javax.servlet:jstl:1.2" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="javax.servlet:servlet-api:2.5" level="project" />
+    <orderEntry type="library" name="com.google.appengine:appengine-api-1.0-sdk:Release" level="project" />
+    <orderEntry type="library" name="firebase" level="application" />
   </component>
 </module>
