@@ -43,8 +43,9 @@ body {
     grid-column: 1 / 3;
     grid-row: 2 / 3;
    float: left;
-    width: 250px;
-    height: 84px;
+    height: 500px;
+    width: 320px;
+    border: solid #1afa22
 
 }
 

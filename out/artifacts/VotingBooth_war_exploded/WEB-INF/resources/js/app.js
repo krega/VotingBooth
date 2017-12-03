@@ -50,12 +50,18 @@
         if(firebaseUser) {
             console.log(firebaseUser);
             btnLogout.classList.remove('hide');
+            const user = firebase.auth().currentUser;
+            console.log("user");
+            console.log(user);
         }
         else{
             console.log('not logged in');
     btnLogout.classList.add('hide');
 }
 });
+    const user = firebase.auth().currentUser;
+    console.log("user");
+    console.log(user);
 
 
 }());
