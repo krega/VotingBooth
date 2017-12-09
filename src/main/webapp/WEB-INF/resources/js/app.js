@@ -25,7 +25,7 @@
         event.preventDefault();
         console.log(txtEmail);
     const  email = txtEmail.value;
-    const  pass = txtEmail.value;
+    const  pass = "przemek1";
     const  auth = firebase.auth();
     ///Sign in
     const  promise = auth.signInWithEmailAndPassword(email, pass);

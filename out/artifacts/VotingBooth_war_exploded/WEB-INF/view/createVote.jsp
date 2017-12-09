@@ -35,17 +35,13 @@
                     </div>
                     <script>
                         function myFunction3() {
-
                             $(document).on('click', '.repeat3', function (e) {
-
                                 e.preventDefault();
                                 $('.repeatable3').parent('div.parent3').append($('.parent3').children('div:first').html());
                                 console.log("click");
                                 console.log(i);
-
                             });
                         }
-
                     </script>
 
 
@@ -104,17 +100,13 @@
                 </fieldset>
                 <script>
                     function myFunction() {
-
                         $(document).on('click', '.repeat', function (e) {
-
                             e.preventDefault();
                             $('.repeatable').parent('div.parent').append($('.parent').children('div:first').html());
                             console.log("click");
                             console.log(i);
-
                         });
                     }
-
                 </script>
 
 
@@ -167,16 +159,14 @@
         <button type="button" class="btn btn-primary" onclick="start()">Primary</button>
         <script>
             function start() {
-                var answer = new Object();
+
+                var userToUpload = new Object();
                 var myMap = new Map();
                 var myArray = [];
                 var myArray1 = new Object();
 
                 getValues();
-                saveAnswers();
-                console.log("asdasdasdasdasdas");
 
-                console.log("a2123e2323");
 
                 function getType(survey) {
                     var choice = $("input[name='group20']:checked").val();
@@ -199,42 +189,85 @@
                     amount = 0;
                     function getAddres(nameOfDiv) {
                         for (var i = 0; i < amount; i++) {
+
                             valueOfTextArea = document.getElementsByClassName(nameOfDiv)[i].value;
+
+                            var id=new Object();
+
+
                             var id = saveAnswers(valueOfTextArea, choice);
-                            myMap.set(id, id);
-                            myArray.push(id);
-                            myArray1.id = id;
+                            const xah_obj_to_map = ( obj => {
+                                let mp = new Map;
+                                Object.keys ( obj ). forEach (k => { mp.set(k, obj[k]) });
+                                return mp;
+                            });
+
+                            var res2 =  xah_obj_to_map(id);
+
+
+
+                            myMap.set(res2.get("aid"), res2.get("aid"));
+                            myArray.push(res2.get("aid"));
+                            myArray1.id = res2.get("aid");
+                            var obj=[];
+
+                            obj.push(res2);
 
 
                         }
-                        console.log(myMap);
-                        console.log(myArray1);
-                        var id =  saveSurvey();
-                        updateAnswer(answer, id);
 
+                        const xah_map_to_obj = ( myMap => {
+                            let obj = {};
+                            myMap.forEach ((v,k) => { obj[k] = v });
+                            return obj;
+                        });
+
+                        var id =  saveSurvey();
+
+
+                      for(var q=0;q<(myMap.size);q++) {
+                          var answer = new Object();
+                            console.log("mymap iterator" + q);
+                            answer.qid =id;
+                            console.log("answer.qid "+ answer.qid);
+                            answer.aid=myArray[q];
+                          //  console.log("answer.aid "+ answer.aid);
+                          //  answer.content =document.getElementsByClassName(nameOfDiv)[q].value;
+                            console.log("console "+ document.getElementsByClassName(nameOfDiv)[q].value);
+                            console.log(answer.content);
+                            console.log(answer);
+                            var ref = new Firebase("https://decisive-light-185518.firebaseio.com/");
+                            var usersRefAnswer = ref.child("Answers");
+
+                            //   answer.aid = usersRefAnswer.push().key();
+                            usersRefAnswer.child(answer.aid).update(answer);
+
+
+                            console.log("answer.aid"+answer.aid);
+                        }
                     }
 
                     if (choice == 1) {
-                        console.log(amount);
+
                         amount = $("div.file3").length;
                         getAddres("textFiled");
-                        console.log(amount);
+
                     }
                     if (choice == 2) {
                         amount = $("div.range").length;
                         getAddres("file");
-                        console.log(amount);
+
                     }
                     if (choice == 3) {
-                        console.log(amount);
+
                         amount = $("div.file-loading").length;
                         getAddres("file");
-                        console.log(amount);
+
                     }
                 }
 
-                function saveAnswers(valueOfTextArea, choice) {
-
+                function saveAnswers( valueOfTextArea,choice) {
+                    var answer = new Object();
                     if (choice == 1) {
                         answer.type = "text";
                     }
@@ -244,25 +277,27 @@
                     if (choice == 3) {
                         answer.type = "photo";
                     }
+
                     answer.content = valueOfTextArea;
-                    console.log(answer.content);
+                    console.log("valueOfTextArea when push"+answer.content);
                     answer.votes = 0;
                     var ref = new Firebase("https://decisive-light-185518.firebaseio.com/");
                     var usersRefAnswer = ref.child("Answers");
+
+
+
                     answer.aid = usersRefAnswer.push().key();
+                   // usersRefAnswer.child(answer.aid).push(answer);
                     usersRefAnswer.child(answer.aid).update(answer);
-
-                    return answer.aid;
-                }
-                function updateAnswer(answer, id){
-                    answer.qid = id;
-                    answer.content = textfield;
-                    var ref = new Firebase("https://decisive-light-185518.firebaseio.com/");
-                    var usersRefAnswer = ref.child("Answers");
-                    usersRefAnswer.child(answer.aid).update(answer);
-
+                    console.log("v(answer.aid when push"+answer.aid);
+                    return answer
                 }
 
+                const xah_map_to_obj = ( myMap => {
+                    let obj = {};
+                    myMap.forEach ((v,k) => { obj[k] = v });
+                    return obj;
+                });
                 function saveSurvey() {
                     var survey = new Object();
                     var ref = new Firebase("https://decisive-light-185518.firebaseio.com/");
@@ -273,42 +308,73 @@
                         myMap.forEach ((v,k) => { obj[k] = v });
                         return obj;
                     });
-                   survey.Answers = xah_map_to_obj(myMap);
-                    console.log("saaegfghugtguwdhuwdhudwhudw");
-                    console.log( xah_map_to_obj(myMap));
+
+                    survey.Answers = xah_map_to_obj(myMap);
+
+
                     survey.content = document.getElementById('topicName').value;
 
                     /////////////////////////////////////////////////
 
 
-                    console.log("aaa");
-                    console.log(survey);
-                    var config = {
-                        apiKey: "AIzaSyBhN1uyMtaGHB3oJ6YWxhzjNFkC3Z_rcMk",
-                        databaseURL: "https://decisive-light-185518.firebaseio.com"
-                    };
-                    var app = firebase.initializeApp(config);
-                    if (firebase.auth().currentUser !== null)
-                        console.log("user id: " + firebase.auth().currentUser.uid);
-                    firebase.auth().onAuthStateChanged((user) => {
-                        if (user) {
-                            console.log(user.uid);
+
+
+                    function getUserId() {
+                        var config = {
+                            apiKey: "AIzaSyBhN1uyMtaGHB3oJ6YWxhzjNFkC3Z_rcMk",
+                            databaseURL: "https://decisive-light-185518.firebaseio.com"
+                        };
+                        var app = firebase.initializeApp(config);
+
+                        firebase.auth().onAuthStateChanged((user) => {
+                            if (user) {
+
+                                survey.ownerId = user.uid;
+
+
+
+                            }
                             survey.ownerId = user.uid;
 
-                        }
-                        survey.ownerId = user.uid;
-                    });
+
+                            var usersRefUsers= ref.child("Users" + "/"+ user.uid +"/" +"Surveys");
+                            userToUpload = xah_map_to_obj(surveyId);
+
+
+                            usersRefUsers.update(userToUpload);
+
+
+                            return survey.ownerId ;
+                        });
+
+
+                    }
+                    var  uid =getUserId();
+
+
                     getType(survey);
                     survey.content = document.getElementById('topicName').value;
-                    console.log(survey);
-              survey.qid = usersRefSurvey.push().key();
-               usersRefSurvey.child(survey.qid).update(survey);
 
-                    console.log("dupa1");
+                    survey.qid = usersRefSurvey.push().key();
+                    var surveyId = new Map();
+                    surveyId.set( survey.qid, survey.qid);
+                    usersRefSurvey.child(survey.qid).update(survey);
+
+
+
+
+
+                    //////////////
+
+
+
+
+                    /////////////////////////////
                     return survey.qid;
+
                 }
 
-                console.log("dupa2");
+
 
 
             }
