@@ -80,8 +80,8 @@
                                     <li>5</li>
 
                                 </ul>
-
-                                <input id="input-b1" name="input-b1" type="file" class="file">
+                                <div class="input-b11">
+                                    <input id="input-b11" name="input-b1" type="file" class="file"></div>
                             </div>
                         </div>
 
@@ -158,6 +158,15 @@
         </div>
         <button type="button" class="btn btn-primary" onclick="start()">Primary</button>
         <script>
+            var config = {
+                apiKey: "AIzaSyBhN1uyMtaGHB3oJ6YWxhzjNFkC3Z_rcMk",
+                authDomain: "decisive-light-185518.firebaseapp.com",
+                databaseURL: "https://decisive-light-185518.firebaseio.com",
+                projectId: "decisive-light-185518",
+                storageBucket: "decisive-light-185518.appspot.com",
+                messagingSenderId: "370672936607"
+            };
+            var app = firebase.initializeApp(config);
             function start() {
 
                 var userToUpload = new Object();
@@ -167,6 +176,26 @@
 
                 getValues();
 
+                function saveImage(id) {
+                    const ref = firebase.storage().ref();
+                    const file = document.querySelector('#input-b11').files[0];
+                          const name = file.name;
+                          const metadata = {
+                              contentType: file.type
+                          };
+                          console.log("name" + name);
+                          const task = ref.child (id + "/"+name ).put(file, metadata);
+                          task.then((snapshot) => {
+                              const url = snapshot.downloadURL;
+                              console.log(url);
+
+                          }).catch((error) => {
+                              console.error(error);
+                          });
+                 document.getElementById("input-b11").remove();
+
+
+                }
 
                 function getType(survey) {
                     var choice = $("input[name='group20']:checked").val();
@@ -189,9 +218,11 @@
                     amount = 0;
                     function getAddres(nameOfDiv) {
                         for (var i = 0; i < amount; i++) {
-
+                              var valueOfdiv;
                             valueOfTextArea = document.getElementsByClassName(nameOfDiv)[i].value;
+                            valueOfdiv = document.getElementsByClassName(nameOfDiv)[i];
 
+                            console.log(valueOfTextArea);
                             var id=new Object();
 
 
@@ -224,26 +255,22 @@
 
                         var id =  saveSurvey();
 
-
-                      for(var q=0;q<(myMap.size);q++) {
-                          var answer = new Object();
-                            console.log("mymap iterator" + q);
+                        for(var q=0;q<(myMap.size);q++) {
+                            var answer = new Object();
                             answer.qid =id;
-                            console.log("answer.qid "+ answer.qid);
                             answer.aid=myArray[q];
-                          //  console.log("answer.aid "+ answer.aid);
-                          //  answer.content =document.getElementsByClassName(nameOfDiv)[q].value;
-                            console.log("console "+ document.getElementsByClassName(nameOfDiv)[q].value);
                             console.log(answer.content);
                             console.log(answer);
                             var ref = new Firebase("https://decisive-light-185518.firebaseio.com/");
                             var usersRefAnswer = ref.child("Answers");
-
-                            //   answer.aid = usersRefAnswer.push().key();
                             usersRefAnswer.child(answer.aid).update(answer);
 
-
-                            console.log("answer.aid"+answer.aid);
+                           var ch= choice.toString();
+                            console.log(ch + "   choice");
+                            if(ch ==="2") {
+                                console.log("zaczynamu!");
+                                saveImage(id);
+                            }
                         }
                     }
 
@@ -273,9 +300,16 @@
                     }
                     if (choice == 2) {
                         answer.type = "photo";
+                        console.log(valueOfTextArea);
+                            valueOfTextArea = valueOfTextArea.substring(12);
+                        console.log(valueOfTextArea);
+
                     }
                     if (choice == 3) {
                         answer.type = "photo";
+                        console.log(valueOfTextArea);
+                        valueOfTextArea = valueOfTextArea.substring(12);
+                        console.log(valueOfTextArea);
                     }
 
                     answer.content = valueOfTextArea;
@@ -287,7 +321,6 @@
 
 
                     answer.aid = usersRefAnswer.push().key();
-                   // usersRefAnswer.child(answer.aid).push(answer);
                     usersRefAnswer.child(answer.aid).update(answer);
                     console.log("v(answer.aid when push"+answer.aid);
                     return answer
@@ -320,11 +353,7 @@
 
 
                     function getUserId() {
-                        var config = {
-                            apiKey: "AIzaSyBhN1uyMtaGHB3oJ6YWxhzjNFkC3Z_rcMk",
-                            databaseURL: "https://decisive-light-185518.firebaseio.com"
-                        };
-                        var app = firebase.initializeApp(config);
+
 
                         firebase.auth().onAuthStateChanged((user) => {
                             if (user) {
