@@ -9,6 +9,10 @@
           <element id="library" level="application" name="jquery" />
           <element id="library" level="application" name="firebase" />
           <element id="library" level="application" name="firebase-database" />
+          <element id="library" level="application" name="jquery-ui" />
+          <element id="library" level="application" name="jquery-1.10.2" />
+          <element id="library" level="application" name="plotly-latest" />
+          <element id="library" level="application" name="jquery.circliful" />
         </element>
         <element id="directory" name="lib">
           <element id="library" level="project" name="Spring-4.3.9.RELEASE" />

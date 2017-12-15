@@ -178,14 +178,6 @@
 
                 function saveImage(id) {
                     const ref = firebase.storage().ref();
-console.log("jestem");
-               /*   //  #input-b11
-
-                    let el1 =  document.querySelectorAll("div.input-b11");
-                    console.log("el11" + el1);
-
-                    console.log("el11safdsv" +el1.length);
-                    /* const file = document.querySelector('#input-b11').files[0];*/
                     const file = document.querySelector('#input-b11').files[0];
                           const name = file.name;
                           const metadata = {
@@ -196,7 +188,7 @@ console.log("jestem");
                           task.then((snapshot) => {
                               const url = snapshot.downloadURL;
                               console.log(url);
-                            //  document.querySelector('#input-b11').src = url;
+
                           }).catch((error) => {
                               console.error(error);
                           });
@@ -327,7 +319,6 @@ console.log("jestem");
                     var usersRefAnswer = ref.child("Answers");
 
 
-
                     answer.aid = usersRefAnswer.push().key();
                     usersRefAnswer.child(answer.aid).update(answer);
                     console.log("v(answer.aid when push"+answer.aid);
@@ -343,7 +334,6 @@ console.log("jestem");
                     var survey = new Object();
                     var ref = new Firebase("https://decisive-light-185518.firebaseio.com/");
                     var usersRefSurvey = ref.child("Surveys");
-
                     const xah_map_to_obj = ( myMap => {
                         let obj = {};
                         myMap.forEach ((v,k) => { obj[k] = v });

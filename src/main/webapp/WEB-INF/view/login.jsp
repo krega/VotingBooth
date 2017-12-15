@@ -8,54 +8,34 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="/WEB-INF/view/template/header.jsp" %>
 
+<!DOCTYPE html>
 <html>
 <head>
-    <link href="<c:url value="/resources/js/login.js" />" >
+    <meta charset="utf-8">
+    <title>MY FIREBASE LOGIN</title>
+    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
     <link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
 
-    <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
+
 
 
 </head>
 <body>
-<div class="container">
-
-    <div class="row" style="margin-top:20px">
-        <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-            <form role="form">
-                <fieldset>
-                    <h2>Please Sign In</h2>
-                    <hr class="colorgraph">
-                    <div class="form-group">
-                        <input type="email" name="email" id="txtEmail" class="form-control input-lg" placeholder="Email Address">
-                    </div>
-                    <div class="form-group">
-                        <input type="password" name="password" id="txtPassword" class="form-control input-lg" placeholder="Password">
-                    </div>
-
-
-				</span>
-                    <hr class="colorgraph">
-                    <div class="row">
-
-                        <button   id="btnLogin" class="btn btn-action" >Log In</button>
-
-
-                        <button  id="btnSignUp" class="btn btn-secondary " value="" >Sign Up</button>
-
-                        <div>
-                            <button id="btnLogout" class="btn btn-action hide">Log out</button>
-                        </div>
-                    </div>
-                </fieldset>
-            </form>
-        </div>
-    </div>
-
+<div class="login">
+    <input type="text" placeholder="nickname" id="nickname">
+    <input type="text" placeholder="Email" id="txtEmail">
+    <input id="txtPassword" type="password" placeholder="password" id="password">
+    <a href="#" class="forgot">forgot password?</a>
+    <input id="btnSignUp" type="button" value="Sign In">
+    <input id="btnLogin" type="button" value="Log In">
 </div>
+<div class="shadow"></div>
 
 </body>
-<script src="<c:url value="/resources/js/app.js" />" ></script>
+
+<script src="<c:url value="/resources/js/auth.js" />" ></script>
+
 </html>
 <%@include file="/WEB-INF/view/template/footer.jsp" %>
 

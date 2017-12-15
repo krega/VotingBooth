@@ -319,7 +319,6 @@
                     var usersRefAnswer = ref.child("Answers");
 
 
-
                     answer.aid = usersRefAnswer.push().key();
                     usersRefAnswer.child(answer.aid).update(answer);
                     console.log("v(answer.aid when push"+answer.aid);
@@ -335,7 +334,6 @@
                     var survey = new Object();
                     var ref = new Firebase("https://decisive-light-185518.firebaseio.com/");
                     var usersRefSurvey = ref.child("Surveys");
-
                     const xah_map_to_obj = ( myMap => {
                         let obj = {};
                         myMap.forEach ((v,k) => { obj[k] = v });

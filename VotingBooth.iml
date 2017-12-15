@@ -57,5 +57,9 @@
     <orderEntry type="library" name="com.google.appengine:appengine-api-1.0-sdk:Release" level="project" />
     <orderEntry type="library" name="firebase" level="application" />
     <orderEntry type="library" name="firebase-database" level="application" />
+    <orderEntry type="library" name="jquery-1.10.2" level="application" />
+    <orderEntry type="library" name="jquery-ui" level="application" />
+    <orderEntry type="library" name="plotly-latest" level="application" />
+    <orderEntry type="library" name="jquery.circliful" level="application" />
   </component>
 </module>
