@@ -155,6 +155,31 @@
                 </fieldset>
 
             </div>
+            <div>
+
+                <label class="form-check-label">
+                    <span class="label label-info" >Password</span>
+                    <input type="checkbox" class="form-check-input" name="checkbox1" id="checkboxPass">
+                   <input type="text" id="password" name="myPassword" placeholder="password" disabled style="width: 110px;" />
+
+                </label>
+                <script>
+                    $(function() {
+                        $('#checkboxPass').click(function() {
+                            var cb1 = $('#checkboxPass').is(':checked');
+                            $('#password, #emailConfirm').prop('disabled', !(cb1));
+
+                        });
+                    });
+
+
+                </script>
+                <label class="form-check-label">
+
+                    <span class="label label-info" >time stample</span>
+                    <input type="checkbox" class="form-check-input">
+                </label>
+            </div>
         </div>
         <button type="button" class="btn btn-primary" onclick="start()">Primary</button>
         <script>
@@ -381,7 +406,12 @@
 
                     getType(survey);
                     survey.content = document.getElementById('topicName').value;
+                    if (document.getElementById('checkboxPass').checked) {
 
+                        var pass = document.getElementById('password').value;
+
+                        survey.password=sha256(pass);
+                    }
                     survey.qid = usersRefSurvey.push().key();
                     var surveyId = new Map();
                     surveyId.set( survey.qid, survey.qid);
@@ -409,5 +439,5 @@
     </section>
 </form>
 
-
+<script src="<c:url value="/resources/js/sha256.js" />"></script>
 <%@include file="/WEB-INF/view/template/footer.jsp" %>

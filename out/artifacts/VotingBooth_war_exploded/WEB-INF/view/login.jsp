@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
--<%@include file="/WEB-INF/view/template/header.jsp" %>
+<%@include file="/WEB-INF/view/template/header.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,6 @@
     <script src="https://www.gstatic.com/firebasejs/4.6.2/firebase.js"></script>
     <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
     <link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
-    <!--<script src="<c:url value="/resources/js/dateBaseConnection.js" /> "></script>-->
 
 
 
