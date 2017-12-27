@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:300');
+@import url('https://fonts.googleapis.com/css?family=Berkshire+Swash');
+@import url('https://fonts.googleapis.com/css?family=Oleo+Script');
+@import url('http://fonts.googleapis.com/css?family=Merienda+One');
+
+body
+{
+    font-family:'Roboto';
+    
+}
+
+#Ans
+{
+    
+}
+
+#surveyName
+{    
+    border: 0;
+    border-bottom: 2px solid #2C3539;
+    width: 40%;
+    height:30px;   
+    text-align: center;
+    font-weight:30;
+    font-size:22px;
+    padding: 10px;
+    background: transparent;
+    color: #2C3539;
+}
+
+h3
+{
+    text-align: center;
+}
+
+input[type="checkbox"] {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-2px 10px 0 0;
+    vertical-align:middle;
+    background: linear-gradient(#fdfcfb, #20E2D7);
+    cursor:pointer;
+}
+
+input[type="radio"] {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-2px 10px 0 0;
+    vertical-align:middle;
+    background: linear-gradient(#fdfcfb, #20E2D7);
+    cursor:pointer;
+}
+
+.square_btn{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;/*Button Color*/
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+    width:100px;
+    height:40px;
+}
+.square_btn:active {/*on Click*/
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);/*Move down*/
+    border-bottom: none;/*disappears*/    
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+ 
+.thumbnail:hover {
+    position:relative;
+    top:-25px;
+    left:-35px;
+    width:500px;
+    height:auto;
+    display:block;
+    z-index:999;
+}
+
+body {
+  text-align:center;
+}
+
+#Outer
+{
+    font: 400 100px/1.2 'Merienda One', Helvetica, sans-serif;
+    color: rgba(0,0,0,0.7);
+    text-shadow: 3px 3px 3px #fff
+    background: #fdfcfb;
+    font-weight:300;
+    font-size:32px;
+    align-content: center;
+}
+
+#HEADER {
+    /*background: linear-gradient(#fdfcfb, #20E2D7);*/
+    background-image: url("D:\\myFireBaseApp\\jsFire_main_repo\\2755.jpg");
+    border: solid 1px #CCC;
+    height:120px;
+    -moz-box-shadow: 10px 10px 0px #999;
+    -webkit-box-shadow: 5px 5px 0px #999;
+    box-shadow: 5px 5px 5px #999;
+    margin-left: 40px;
+    margin-right: 40px;
+    background-size:100%;
+    color: #2C3539;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+#logo
+{
+    max-width: 80%;
+    max-height: 80%;
+    position: relative;
+    left: -150px;
+    background: transparent;
+}
+
+#VT
+{    
+    animation: showup 15s; /*infinite;*/
+    vertical-align: middle;
+    font-size: 45px;
+    line-height: 35px;
+}
+
+#AE
+{
+  margin-left:-355px;
+  animation: slidein 7s; /*infinite;*/
+}
+
+#content
+{
+    /*background: linear-gradient(#20E2D7, #fdfcfb);*/
+    background-image: url("D:\\myFireBaseApp\\jsFire_main_repo\\24694-NV6XZ4.jpg");
+    font-family:'Roboto';
+    border: solid 1px #CCC;
+    -moz-box-shadow: 10px 10px 0px #999;
+    -webkit-box-shadow: 5px 5px 0px #999;
+    box-shadow: 5px 5px 5px #999;
+    margin-top: 15px;
+    margin-left: 40px;
+    margin-right: 40px;
+    align-content: center;
+    vertical-align: middle
+    display: table-cell
+}
+
+table
+{
+    margin: 0 auto;
+    width: 50%;
+}
+
+#myChart
+{
+    width:700px;
+    height:450px;
+    vertical-align: middle;
+    align-content: center;
+}
+
+#divTable {
+    margin: 0 auto;
+    background: transparent;
+    border: solid 1px #CCC;
+    margin-top: 15px;
+    width: 80%;
+    -moz-box-shadow: 10px 10px 0px #999;
+    -webkit-box-shadow: 5px 5px 0px #999;
+    box-shadow: 5px 5px 5px #999;
+}
+
+@keyframes showup {
+    0% {opacity:0;}
+    20% {opacity:1;}
+    80% {opacity:1;}
+    100% {opacity:0;}
+}
+
+@keyframes slidein {
+    0% { margin-left:-800px; }
+    20% { margin-left:-800px; }
+    35% { margin-left:0px; }
+    100% { margin-left:0px; }
+}
+
+@keyframes reveal {
+    0% {opacity:0;width:0px;}
+    20% {opacity:1;width:0px;}
+    30% {width:355px;}
+    80% {opacity:1;}
+    100% {opacity:0;width:355px;}
+}
+
+
+
